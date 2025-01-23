@@ -34,8 +34,11 @@ Todas as Pessoas cadastradas, sejam Estudantes ou Professores, devem ter usuári
 Perfis de usuários desejados:
 * Professor: Pode lecionar em vários cursos. Pode dar notas e presenças à Alunos que estejam em cursos os quais leciona.
 * Estudante: Pode matricular-se em vários cursos. Pode ver notas e presenças lançadas em seus cursos.
+
 Relatórios não são obrigatórios, mas a presença dos mesmos tende a melhorar sua avaliação.
+
 Se aplicar melhorias não previstas no desafio, favor destacá-las.
+
 Em caso de dúvidas quanto a interpretação, você pode entrar em contato pelo email ti.dev@unoesc.edu.br.
 
 ## ESCOPO DO DESAFIO
