@@ -3,7 +3,7 @@ CORRESPONDENTE AO EDITAL N. 79/UNOESC-R/2024
 
 Desafio Programador Fullstack Unoesc
 
-Esse é o nosso desafio para a vaga de programador Fullstack na Unoesc. Serão testadas as habilidades e qualidade de código ao transformar requisitos limitados em uma aplicação web.
+Este é o nosso desafio para a vaga de programador Fullstack na Unoesc. Serão testadas as habilidades e qualidade de código ao transformar requisitos limitados em uma aplicação web.
 
 *FAÇA O FORK DESTE REPOSITÓRIO E IMPLEMENTE O DESAFIO. QUEREMOS ACOMPANHAR SEUS COMMITS*
 
