@@ -1,13 +1,13 @@
 # Desafio TI DEV UNOESC 2025/1
 CORRESPONDENTE AO EDITAL N. 79/UNOESC-R/2024
 
-Desafio Programador Fullstack Unoesc - Java
-Esse é o nosso desafio para a vaga de programador Fullstack Java na Unoesc. Serão testadas as habilidades e qualidade de código ao transformar requisitos limitados em uma aplicação web.
+Desafio Programador Fullstack Unoesc
+Esse é o nosso desafio para a vaga de programador Fullstack na Unoesc. Serão testadas as habilidades e qualidade de código ao transformar requisitos limitados em uma aplicação web.
 
-*FAÇA O FORK DESTE REPOSITÓRIO E IMPLEMENTE O DESAFIO. QUEREMOS PODER ACOMPANHAR SEUS COMMITS*
+*FAÇA O FORK DESTE REPOSITÓRIO E IMPLEMENTE O DESAFIO. QUEREMOS ACOMPANHAR SEUS COMMITS*
 
 ## TECNOLOGIAS OBRIGATÓRIAS
-* O escopo de linguagem é aberto, mas a utilização da Orientação a Objetos é importante para a avaliação.
+* O escopo de linguagem é aberto, mas a utilização da Orientação a Objetos é um importante critério para a avaliação.
 * MySQL 5.7.X+ OU Postgress;
 * GIT;
 
@@ -28,12 +28,14 @@ OBS: Plágios tendem a ser desclassificados. Atenção com o uso excessivo de IA
 Você terá que desenvolver uma aplicação web responsável por fazer a gestão de cursos. 
 Professores associados a um Curso poderão realizar a manutenção de Notas e Frequência de Estudantes devidamente matriculados.
 Estudantes associados a um Curso poderão verificar as Notas e Frequência lançadas, separadas por Curso.
-Você pode criar um usuario padrão/admin para realizar os cadastros.
-Todas as pessoas cadastradas, sejam Estudantes ou Professores, devem ter usuário e senha próprios para realizar login em seus respectivos portais.
+Você pode criar um usuario padrão/admin para realizar os cadastros-base.
+Todas as Pessoas cadastradas, sejam Estudantes ou Professores, devem ter usuário e senha próprios para realizar login em seus respectivos portais.
 Perfis de usuários desejados:
 * Professor: Pode lecionar em vários cursos. Pode dar notas e presenças à Alunos que estejam em cursos os quais leciona.
 * Estudante: Pode matricular-se em vários cursos. Pode ver notas e presenças lançadas em seus cursos.
-
+Relatórios não são obrigatórios, mas a presença dos mesmos tende a melhorar sua avaliação.
+Se aplicar melhorias não previstas no desafio, favor destacá-las.
+Em caso de dúvidas quanto a interpretação, você pode entrar em contato pelo email ti.dev@unoesc.edu.br.
 
 ## ESCOPO DO DESAFIO
 
