@@ -1,5 +1,5 @@
 # Desafio TI DEV UNOESC 2025/1
-CORREDPONDENTE AO EDITAL N. 79/UNOESC-R/2024
+CORRESPONDENTE AO EDITAL N. 79/UNOESC-R/2024
 
 Desafio Programador Fullstack Unoesc - Java
 Esse é o nosso desafio para a vaga de programador Fullstack Java na Unoesc. Serão testadas as habilidades e qualidade de código ao transformar requisitos limitados em uma aplicação web.
