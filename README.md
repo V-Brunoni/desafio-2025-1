@@ -7,6 +7,8 @@ Este é o nosso desafio para a vaga de programador Fullstack na Unoesc. Serão t
 
 *FAÇA O FORK DESTE REPOSITÓRIO E IMPLEMENTE O DESAFIO. QUEREMOS ACOMPANHAR SEUS COMMITS*
 
+Ao concluir o desafio, lembre de enviar um email para recrutamentorh.jba@unoesc.edu.br, ti.coord@unoesc.edu.br e ti.dev@unoesc.edu.br, com seu repositório.
+
 ## TECNOLOGIAS OBRIGATÓRIAS
 * O escopo de linguagem é aberto, mas a utilização da Orientação a Objetos é um importante critério para a avaliação.
 * MySQL 5.7.X+ OU Postgress;
