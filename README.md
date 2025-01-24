@@ -27,7 +27,7 @@ O código será avaliado de acordo com os seguinte critérios:
 * Sentido e coerência nas respostas aos questionamentos na entrevista de apresentação do desafio realizada pelo candidato.
 OBS: Plágios tendem a ser desclassificados. Atenção com o uso excessivo de IA.
 
-**Estamos buscando desenvolvedores que topam desafios, então mesmo não cumprindo todo os requisitos, seu esforço será reconhecido.**
+**Estamos buscando desenvolvedores que topam desafios, então mesmo não cumprindo todo os requisitos, seu esforço será avaliado.**
 
 ## DESAFIO
 Você terá que desenvolver uma aplicação web responsável por fazer a gestão de cursos. 
