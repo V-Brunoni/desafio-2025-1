@@ -5,9 +5,9 @@ Desafio Programador Fullstack Unoesc
 
 Este é o nosso desafio para a vaga de programador Fullstack na Unoesc. Serão testadas as habilidades e qualidade de código ao transformar requisitos limitados em uma aplicação web.
 
-*FAÇA O FORK DESTE REPOSITÓRIO E IMPLEMENTE O DESAFIO. QUEREMOS ACOMPANHAR SEUS COMMITS*
+*FAÇA O FORK DESTE REPOSITÓRIO E IMPLEMENTE O DESAFIO. MANTENHA PÚBLICO, POIS QUEREMOS ACOMPANHAR SEUS COMMITS*
 
-Ao concluir o desafio, lembre de enviar um email para recrutamentorh.jba@unoesc.edu.br, ti.coord@unoesc.edu.br e ti.dev@unoesc.edu.br, com seu repositório.
+Ao concluir o desafio, lembre de enviar um email para recrutamentorh.jba@unoesc.edu.br, ti.coord@unoesc.edu.br e ti.dev@unoesc.edu.br, com seu repositório. Lembre de incluir a documentação para que possamos rodar sua aplicação.
 
 ## TECNOLOGIAS OBRIGATÓRIAS
 * O escopo de linguagem é aberto, mas a utilização da Orientação a Objetos é um importante critério para a avaliação.
