@@ -1,20 +1,35 @@
 package br.edu.unoesc.desafio_2025_1.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "estudanteCurso")
+@Table(name = "estudantes")
+@Getter
+@Setter
+@NoArgsConstructor
 public class EstudanteCurso {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @ManyToOne
     private Pessoa estudante;
 
+    @ManyToOne
     private Curso curso;
+
+    @OneToMany(mappedBy = "estudante")
+    private List<CursoNota> notas = new ArrayList<>();
+
+    @OneToMany(mappedBy = "estudante")
+    private List<CursoPresenca> presencas = new ArrayList<>();
 
     public EstudanteCurso(int id, Pessoa estudante, Curso curso) {
         this.id = id;
@@ -22,27 +37,4 @@ public class EstudanteCurso {
         this.curso = curso;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Pessoa getEstudante() {
-        return estudante;
-    }
-
-    public void setEstudante(Pessoa estudante) {
-        this.estudante = estudante;
-    }
-
-    public Curso getCurso() {
-        return curso;
-    }
-
-    public void setCurso(Curso curso) {
-        this.curso = curso;
-    }
 }

@@ -1,19 +1,25 @@
 package br.edu.unoesc.desafio_2025_1.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Table(name = "cursoNotas")
+@Table(name = "notas")
+@Getter
+@Setter
+@NoArgsConstructor
 public class CursoNota {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @ManyToOne
     private Curso curso;
 
+    @ManyToOne
     private EstudanteCurso estudante;
 
     public CursoNota(int id, Curso curso, EstudanteCurso estudante) {
@@ -22,27 +28,4 @@ public class CursoNota {
         this.estudante = estudante;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Curso getCurso() {
-        return curso;
-    }
-
-    public void setCurso(Curso curso) {
-        this.curso = curso;
-    }
-
-    public EstudanteCurso getEstudante() {
-        return estudante;
-    }
-
-    public void setEstudante(EstudanteCurso estudante) {
-        this.estudante = estudante;
-    }
 }

@@ -1,72 +1,54 @@
 package br.edu.unoesc.desafio_2025_1.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "cursos")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Curso {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "nomeCurso")
     private String nome;
 
+    @Column(name = "assuntoCurso")
     private String assunto;
 
     private int encontros;
 
-    private String situacao;
+    @Enumerated(EnumType.STRING)
+    private Situacao situacao;
 
-    public Curso(int id, String nome, String assunto, int encontros, String situacao) {
+    @OneToMany(mappedBy = "curso")
+    private List<ProfessorCurso> professores = new ArrayList<>();
+
+    @OneToMany(mappedBy = "curso")
+    private List<CursoNota> notas = new ArrayList<>();
+
+    @OneToMany(mappedBy = "curso")
+    private List<CursoPresenca> presencas = new ArrayList<>();
+
+    @OneToMany(mappedBy = "curso")
+    private List<EstudanteCurso> estudantes = new ArrayList<>();
+
+    public Curso(int id, String nome, String assunto, int encontros, Situacao situacao) {
         this.id = id;
         this.nome = nome;
         this.assunto = assunto;
         this.encontros = encontros;
-        this.situacao = situacao;
+        this.situacao = Situacao.fromString("ativo"); // Alterar depois
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getAssunto() {
-        return assunto;
-    }
-
-    public void setAssunto(String assunto) {
-        this.assunto = assunto;
-    }
-
-    public int getEncontros() {
-        return encontros;
-    }
-
-    public void setEncontros(int encontros) {
-        this.encontros = encontros;
-    }
-
-    public String getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(String situacao) {
-        this.situacao = situacao;
-    }
 }

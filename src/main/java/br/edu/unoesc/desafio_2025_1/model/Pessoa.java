@@ -1,104 +1,76 @@
 package br.edu.unoesc.desafio_2025_1.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "pessoas")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Pessoa {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
+    //@Column(unique = true)
     private String cpf;
 
     private boolean ativo;
 
-    private String nome;
+    private String nomeCompleto;
 
+    @JsonProperty("first")
+    @Transient
+    private String primeiroNome;
+
+    @JsonProperty("last")
+    @Transient
+    private String sobrenome;
+
+    @JsonProperty("email")
+    //@Column(unique = true)
     private String email;
 
+    @JsonProperty("phone")
+    //@Column(unique = true)
     private String telefone;
 
+    //@Column(unique = true)
     private String usuario;
 
+    //@Column(unique = true)
     private String senha;
 
-    public Pessoa(DadosPessoa dadosPessoa){
-        this.nome = dadosPessoa.nome();
+    @OneToOne(mappedBy = "pessoa")
+    private PessoaEndereco pessoaEndereco;
+
+    @OneToMany(mappedBy = "professor")
+    private List<ProfessorCurso> professores = new ArrayList<>();
+
+    @OneToMany(mappedBy = "estudante")
+    private List<EstudanteCurso> estudantes = new ArrayList<>();
+
+    public Pessoa(Integer id, String cpf, boolean ativo, String usuario, String senha){
+        this.id = id;
+        this.cpf = cpf;
+        this.ativo = ativo;
+        this.usuario = usuario;
+        this.senha = senha;
+    }
+
+    public Pessoa(DadosPessoa dadosPessoa) {
+        this.nomeCompleto = dadosPessoa.getNomeCompleto();
         this.email = dadosPessoa.email();
         this.telefone = dadosPessoa.telefone();
     }
 
-    public Pessoa(int id, String cpf, boolean ativo, String usuario, String senha) {
-        this.id = id;
-        this.cpf = cpf;
-        this.ativo = ativo;
-        this.usuario = usuario;
-        this.senha = senha;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public boolean isAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
 }

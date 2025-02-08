@@ -4,7 +4,18 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record DadosPessoa(@JsonAlias({"first" + "last"}) String nome,
+public record DadosPessoa(@JsonAlias("first") String primeiroNome,
+                          @JsonAlias("last") String sobrenome,
                           @JsonAlias("email") String email,
                           @JsonAlias("phone") String telefone) {
+
+
+    public String getNomeCompleto() {
+        return primeiroNome + " " + sobrenome;
+    }
 }
+
+
+
+
+
