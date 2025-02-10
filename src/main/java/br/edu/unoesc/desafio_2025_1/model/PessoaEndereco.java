@@ -27,9 +27,6 @@ public class PessoaEndereco {
     @OneToOne
     private Pessoa pessoa;
 
-
-
-
     public PessoaEndereco(Integer id, String cidade, String cep, String rua, Integer numero, Pessoa pessoa) {
         this.id = id;
         this.cidade = cidade;

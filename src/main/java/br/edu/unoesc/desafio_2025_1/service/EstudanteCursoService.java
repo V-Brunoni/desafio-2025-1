@@ -14,35 +14,26 @@ public class EstudanteCursoService {
     @Autowired
     private EstudanteCursoRepository repositorio;
 
-    public EstudanteCurso cadastrarEstudante(EstudanteCurso estudante){
+    public EstudanteCurso cadastrarEstudante(EstudanteCurso estudante) {
+        Curso curso = estudante.getCurso();
+        if (curso.getSituacao() != Situacao.ATIVO) {
+            throw new RuntimeException("O curso precisa estar com a situação ATIVO para cadastrar o estudante.");
+        }
         return repositorio.save(estudante);
     }
 
-    public List<EstudanteCurso> obtemListaEstudante(){
+    public List<EstudanteCurso> obtemListaEstudante() {
         return repositorio.findAll();
     }
 
-    public Optional<EstudanteCurso> buscarPorIdEstudante(Integer id){
+    public Optional<EstudanteCurso> buscarPorIdEstudante(Integer id) {
         return repositorio.findById(id);
     }
 
-    public void deletarEstudante(Integer id){
+    public void deletarEstudante(Integer id) {
         Optional<EstudanteCurso> estudante = buscarPorIdEstudante(id);
         if (estudante.isPresent()) {
             repositorio.delete(estudante.get());
         }
     }
-
-
-//    public void associarEstudanteCurso(Pessoa estudante, Curso curso) {
-//        if (curso.getSituacao() != Situacao.ATIVO) {
-//            throw new RuntimeException("Não é possível associar a cursos inativos.");
-//        }
-//
-//        EstudanteCurso estudanteCurso = new EstudanteCurso();
-//        estudanteCurso.setEstudante(estudante);
-//        estudanteCurso.setCurso(curso);
-//
-//        repositorio.save(estudanteCurso);
-//    }
 }

@@ -1,6 +1,8 @@
 package br.edu.unoesc.desafio_2025_1.service;
 
+import br.edu.unoesc.desafio_2025_1.model.Curso;
 import br.edu.unoesc.desafio_2025_1.model.ProfessorCurso;
+import br.edu.unoesc.desafio_2025_1.model.Situacao;
 import br.edu.unoesc.desafio_2025_1.repository.ProfessorCursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,10 @@ public class ProfessorCursoService {
     private ProfessorCursoRepository repositorio;
 
     public ProfessorCurso cadastrarProfessor(ProfessorCurso professor){
+        Curso curso = professor.getCurso();
+        if (curso.getSituacao() != Situacao.ATIVO) {
+            throw new RuntimeException("O curso precisa estar com a situação ATIVO para cadastrar o estudante.");
+        }
         return repositorio.save(professor);
     }
 

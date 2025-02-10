@@ -20,11 +20,12 @@ public class Pessoa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    //@Column(unique = true)
+    @Column(unique = true)
     private String cpf;
 
     private boolean ativo;
 
+    @Column(unique = true)
     private String nomeCompleto;
 
     @JsonProperty("first")
@@ -36,17 +37,15 @@ public class Pessoa {
     private String sobrenome;
 
     @JsonProperty("email")
-    //@Column(unique = true)
+    @Column(unique = true)
     private String email;
 
     @JsonProperty("phone")
-    //@Column(unique = true)
     private String telefone;
 
-    //@Column(unique = true)
+    @Column(unique = true)
     private String usuario;
 
-    //@Column(unique = true)
     private String senha;
 
     @OneToOne(mappedBy = "pessoa")

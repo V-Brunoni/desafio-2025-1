@@ -19,7 +19,7 @@ public class Curso {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "nomeCurso")
+    @Column(name = "nomeCurso", unique = true)
     private String nome;
 
     @Column(name = "assuntoCurso")
