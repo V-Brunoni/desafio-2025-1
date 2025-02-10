@@ -21,7 +21,7 @@ public class EstudanteCurso {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonBackReference
     private Pessoa estudante;
 

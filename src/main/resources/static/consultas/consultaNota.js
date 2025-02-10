@@ -6,17 +6,17 @@
 
                     event.preventDefault();
 
-                    let idCurso = this.getAttribute("data-id");
+                    let idNota = this.getAttribute("data-id");
 
-                    if (confirm("Tem certeza que deseja excluir este curso?")) {
-                        fetch("/curso/deletar/" + idCurso, {
+                    if (confirm("Tem certeza que deseja excluir essa nota?")) {
+                        fetch("/nota/deletar/" + idNota, {
                             method: "DELETE"
                         })
                         .then(response => {
                             if (response.ok) {
                                 return response.text();
                             }
-                            throw new Error("Erro ao deletar o curso.");
+                            throw new Error("Erro ao deletar a nota.");
                         })
                         .then(mensagem => {
                             alert(mensagem);

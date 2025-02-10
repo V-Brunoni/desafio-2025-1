@@ -1,7 +1,6 @@
 package br.edu.unoesc.desafio_2025_1.service;
 
 import br.edu.unoesc.desafio_2025_1.model.*;
-import br.edu.unoesc.desafio_2025_1.repository.CursoRepository;
 import br.edu.unoesc.desafio_2025_1.repository.EstudanteCursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

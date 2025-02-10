@@ -1,5 +1,6 @@
 package br.edu.unoesc.desafio_2025_1.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,19 +15,21 @@ public class CursoNota {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
-    private Double nota;
+    private Double notas;
 
     @ManyToOne
+    @JsonBackReference
     private Curso curso;
 
     @ManyToOne
+    @JsonBackReference
     private EstudanteCurso estudante;
 
-    public CursoNota(int id, Double nota, Curso curso, EstudanteCurso estudante) {
+    public CursoNota(Integer id, Double notas, Curso curso, EstudanteCurso estudante) {
         this.id = id;
-        this.nota = nota;
+        this.notas = notas;
         this.curso = curso;
         this.estudante = estudante;
     }
