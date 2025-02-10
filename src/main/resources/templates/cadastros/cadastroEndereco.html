@@ -1,10 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Cadastro de Endereços</title>
 </head>
 <body>
-$END$
+<main>
+    <div  class="container-form">
+        <h1>Cadastro de Endereços</h1>
+        <form th:action="@{/endereco/salvar}" th:object="${endereco}" method="post" id="enderecoForm">
+            <div>
+                <label for="id">Id:</label>
+                <input type="text" id="id" th:field="*{id}" placeholder="Id" readonly />
+            </div>
+            <div>
+                <label for="cidade">Cidade:</label>
+                <input type="text" id="cidade" th:field="*{cidade}" placeholder="Cidade"/>
+            </div>
+            <div>
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" th:field="*{cep}" placeholder="CEP"/>
+            </div>
+            <div>
+                <label for="rua">Rua:</label>
+                <input type="text" id="rua" th:field="*{rua}"  placeholder="Rua"/>
+            </div>
+            <div>
+                <label for="numero">Número:</label>
+                <input type="text" id="numero" th:field="*{numero}"  placeholder="Número"/>
+            </div>
+            <div>
+                <label for="pessoa">Pessoa:</label>
+                <select id="pessoa" th:field="*{pessoa}">
+                    <option value="" disabled selected>Selecione uma pessoa</option>
+                    <option th:each="pessoa : ${pessoas}" th:value="${pessoa.id}" th:text="${pessoa.nomeCompleto}"></option>
+                </select>
+                <div class="hide-message" id="error-pessoa"></div>
+            </div>
+            <div class="div-button">
+                <button type="submit">Salvar</button>
+                <button type="reset">Limpar</button>
+                <button type="button" onclick="window.location.href='/endereco/listarDados'">Listar</button>
+            </div>
+        </form>
+        <div id="response-api" class="hide-message"></div>
+    </div>
+</main>
+<script src="/cadastros/cadastroEndereco.js"></script>
 </body>
 </html>
