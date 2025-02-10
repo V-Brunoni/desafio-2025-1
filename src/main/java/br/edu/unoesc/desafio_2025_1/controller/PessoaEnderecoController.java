@@ -1,7 +1,10 @@
 package br.edu.unoesc.desafio_2025_1.controller;
 
-import br.edu.unoesc.desafio_2025_1.model.Curso;
-import br.edu.unoesc.desafio_2025_1.service.CursoService;
+
+import br.edu.unoesc.desafio_2025_1.model.Pessoa;
+import br.edu.unoesc.desafio_2025_1.model.PessoaEndereco;
+import br.edu.unoesc.desafio_2025_1.service.PessoaEnderecoService;
+import br.edu.unoesc.desafio_2025_1.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,21 +22,23 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/curso")
-public class CursoController {
+@RequestMapping("/endereco")
+public class PessoaEnderecoController {
 
     @Autowired
-    CursoService cursoService;
+    private PessoaEnderecoService enderecoService;
+    @Autowired
+    private PessoaService pessoaService;
 
     @GetMapping("/cadastro")
-    public String getCursos(Model model){
-        Curso curso = new Curso();
-        model.addAttribute("curso", curso);
-        return "/cadastros/cadastroCurso";
+    public String getEnderecos(@ModelAttribute("endereco") PessoaEndereco endereco, Model model){
+        List<Pessoa> pessoas = pessoaService.obtemListaPessoas();
+        model.addAttribute("pessoas", pessoas);
+        return "/cadastros/cadastroEndereco";
     }
 
     @PostMapping("/salvar")
-    public ResponseEntity<?> salvarCurso(@Validated @ModelAttribute Curso curso, BindingResult result){
+    public ResponseEntity<?> salvarEndereco(@Validated @ModelAttribute PessoaEndereco endereco, BindingResult result){
         try {
             if(result.hasErrors()){
                 Map<String, String> erros = new HashMap<>();
@@ -42,8 +47,8 @@ public class CursoController {
                 });
                 return ResponseEntity.badRequest().body(erros);
             }
-            Curso cursoSalvo = cursoService.cadastrarCurso(curso);
-            return ResponseEntity.status(HttpStatus.CREATED).body(cursoSalvo); // VER COM O RODRIGO SE AQUI É CURSOSALVO MESMO
+            PessoaEndereco enderecoSalvo = enderecoService.cadastrarEndereco(endereco);
+            return ResponseEntity.status(HttpStatus.CREATED).body(enderecoSalvo);
         }catch (Exception e){
             Map<String, String> erro = new HashMap<>();
             erro.put("erro", "Ocorreu um problema ao Salvar o registro");
@@ -53,9 +58,9 @@ public class CursoController {
 
 
     @GetMapping("/listarDados")
-    public String listarDadosCurso(Model model){
-        List<Curso> cursos = cursoService.obtemListaCursos();
-        model.addAttribute("cursos", cursos);
-        return "/consultas/consultaCurso";
+    public String listarDadosEndereco(Model model){
+        List<PessoaEndereco> enderecos = enderecoService.obtemListaEnderecos();
+        model.addAttribute("enderecos", enderecos);
+        return "/consultas/consultaEndereco";
     }
 }
