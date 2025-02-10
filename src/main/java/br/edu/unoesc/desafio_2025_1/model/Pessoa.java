@@ -49,7 +49,7 @@ public class Pessoa {
     //@Column(unique = true)
     private String senha;
 
-    @OneToOne(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(mappedBy = "pessoa")
     private PessoaEndereco pessoaEndereco;
 
     @OneToMany(mappedBy = "professor")

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Inicial</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card-header {
+      background-color: #000000;
+      color: white;
+    }
+    .card-body a {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.2em;
+      color: #007bff;
+      text-decoration: none;
+    }
+    .card-body a:hover {
+      color: #0056b3;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<div class="container mt-5">
+  <div class="card shadow">
+    <div class="card-header text-center">
+      <h1>Página Inicial</h1>
+    </div>
+    <div class="card-body">
+      <h3 class="text-center mb-4">Menu de Navegação</h3>
+      <div class="d-flex justify-content-around">
+        <div class="text-center">
+          <h4>Cadastrar</h4>
+          <a href="/pessoa/cadastro" class="btn btn-primary btn-lg text-white">Cadastrar Pessoa</a>
+          <a href="/endereco/cadastro" class="btn btn-primary btn-lg text-white">Cadastrar Endereco</a>
+          <a href="/curso/cadastro" class="btn btn-primary btn-lg text-white">Cadastrar Curso</a>
+          <a href="/estudante/cadastro" class="btn btn-primary btn-lg text-white">Cadastrar Estudante</a>
+          <a href="/professor/cadastro" class="btn btn-primary btn-lg text-white">Cadastrar Professor</a>
+          <a href="/nota/cadastro" class="btn btn-primary btn-lg text-white">Cadastrar Nota</a>
+          <a href="/presenca/cadastro" class="btn btn-primary btn-lg text-white">Cadastrar Presença</a>
+        </div>
+        <div class="text-center">
+          <h4>Consultar Dados</h4>
+          <a href="/pessoa/listarDados" class="btn btn-success btn-lg text-white">Consultar Pessoas</a>
+          <a href="/endereco/listarDados" class="btn btn-success btn-lg text-white">Consultar Endereços</a>
+          <a href="/curso/listarDados" class="btn btn-success btn-lg text-white">Consultar Cursos</a>
+          <a href="/estudante/listarDados" class="btn btn-success btn-lg text-white">Consultar Estudantes</a>
+          <a href="/professor/listarDados" class="btn btn-success btn-lg text-white">Consultar Professores</a>
+          <a href="/nota/listarDados" class="btn btn-success btn-lg text-white">Consultar Notas</a>
+          <a href="/presenca/listarDados" class="btn btn-success btn-lg text-white">Consultar Presenças</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
