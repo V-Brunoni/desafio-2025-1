@@ -5,6 +5,8 @@ import br.edu.unoesc.desafio_2025_1.repository.CursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CursoService {
 
@@ -13,5 +15,9 @@ public class CursoService {
 
     public Curso cadastrarCurso(Curso curso){
         return repositorio.save(curso);
+    }
+
+    public List<Curso> obtemListaCursos(){
+        return repositorio.findAll();
     }
 }
