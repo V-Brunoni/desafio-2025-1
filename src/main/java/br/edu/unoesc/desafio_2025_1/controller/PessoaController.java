@@ -22,7 +22,7 @@ import java.util.Optional;
 public class PessoaController {
 
     @Autowired
-    PessoaService pessoaService;
+    private PessoaService pessoaService;
 
     @GetMapping("/cadastro")
     public String getPessoas(Model model){

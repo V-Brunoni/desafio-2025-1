@@ -1,9 +1,10 @@
 package br.edu.unoesc.desafio_2025_1.controller;
 
-
+import br.edu.unoesc.desafio_2025_1.model.Curso;
+import br.edu.unoesc.desafio_2025_1.model.EstudanteCurso;
 import br.edu.unoesc.desafio_2025_1.model.Pessoa;
-import br.edu.unoesc.desafio_2025_1.model.PessoaEndereco;
-import br.edu.unoesc.desafio_2025_1.service.PessoaEnderecoService;
+import br.edu.unoesc.desafio_2025_1.service.CursoService;
+import br.edu.unoesc.desafio_2025_1.service.EstudanteCursoService;
 import br.edu.unoesc.desafio_2025_1.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,23 +21,27 @@ import java.util.Map;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/endereco")
-public class PessoaEnderecoController {
+@RequestMapping("/estudante")
+public class EstudanteCursoController {
 
     @Autowired
-    private PessoaEnderecoService enderecoService;
+    private EstudanteCursoService estudanteService;
     @Autowired
     private PessoaService pessoaService;
+    @Autowired
+    private CursoService cursoService;
 
     @GetMapping("/cadastro")
-    public String getEnderecos(@ModelAttribute("endereco") PessoaEndereco endereco, Model model){
+    public String getEstudantes(@ModelAttribute("estudante") EstudanteCurso estudanteCurso, Model model){
         List<Pessoa> pessoas = pessoaService.obtemListaPessoas();
         model.addAttribute("pessoas", pessoas);
-        return "/cadastros/cadastroEndereco";
+        List<Curso> cursos = cursoService.obtemListaCursos();
+        model.addAttribute("cursos", cursos);
+        return "/cadastros/cadastroEstudante";
     }
 
     @PostMapping("/salvar")
-    public ResponseEntity<?> salvarEndereco(@Validated @ModelAttribute PessoaEndereco endereco, BindingResult result){
+    public ResponseEntity<?> salvarEstudante(@Validated @ModelAttribute EstudanteCurso estudante, BindingResult result){
         try {
             if(result.hasErrors()){
                 Map<String, String> erros = new HashMap<>();
@@ -45,8 +50,8 @@ public class PessoaEnderecoController {
                 });
                 return ResponseEntity.badRequest().body(erros);
             }
-            PessoaEndereco enderecoSalvo = enderecoService.cadastrarEndereco(endereco);
-            return ResponseEntity.status(HttpStatus.CREATED).body(enderecoSalvo);
+            EstudanteCurso estudanteSalvo = estudanteService.cadastrarEstudante(estudante);
+            return ResponseEntity.status(HttpStatus.CREATED).body(estudanteSalvo);
         }catch (Exception e){
             Map<String, String> erro = new HashMap<>();
             erro.put("erro", "Ocorreu um problema ao Salvar o registro");
@@ -55,25 +60,27 @@ public class PessoaEnderecoController {
     }
 
     @GetMapping("/listarDados")
-    public String listarDadosEndereco(Model model){
-        List<PessoaEndereco> enderecos = enderecoService.obtemListaEnderecos();
-        model.addAttribute("enderecos", enderecos);
-        return "/consultas/consultaEndereco";
+    public String listarDadosEstudante(Model model){
+        List<EstudanteCurso> estudantes = estudanteService.obtemListaEstudante();
+        model.addAttribute("estudantes", estudantes);
+        return "/consultas/consultaEstudante";
     }
 
     @GetMapping("/editar/{id}")
-    public String editarEndereco(@PathVariable("id") Integer id, Model model) {
+    public String editarEstudante(@PathVariable("id") Integer id, Model model) {
         List<Pessoa> pessoas = pessoaService.obtemListaPessoas();
         model.addAttribute("pessoas", pessoas);
-        Optional<PessoaEndereco> endereco = enderecoService.buscarPorIdEndereco(id);
-        model.addAttribute("endereco", endereco.get());
-        return "/cadastros/cadastroEndereco";
+        List<Curso> cursos = cursoService.obtemListaCursos();
+        model.addAttribute("cursos", cursos);
+        Optional<EstudanteCurso> estudante = estudanteService.buscarPorIdEstudante(id);
+        model.addAttribute("estudante", estudante.get());
+        return "/cadastros/cadastroEstudante";
     }
 
     @DeleteMapping("/deletar/{id}")
-    public ResponseEntity<?> deletarEndereco(@PathVariable("id") Integer id){
+    public ResponseEntity<?> deletarEstudante(@PathVariable("id") Integer id){
         try {
-            enderecoService.deletarEndereco(id);
+            estudanteService.deletarEstudante(id);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
             Map<String, String> erro = new HashMap<>();
@@ -81,4 +88,6 @@ public class PessoaEnderecoController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(erro);
         }
     }
+
+
 }

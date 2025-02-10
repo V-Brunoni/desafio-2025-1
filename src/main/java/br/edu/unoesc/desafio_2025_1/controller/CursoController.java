@@ -21,7 +21,7 @@ import java.util.Optional;
 public class CursoController {
 
     @Autowired
-    CursoService cursoService;
+    private CursoService cursoService;
 
     @GetMapping("/cadastro")
     public String getCursos(Model model){
@@ -60,7 +60,6 @@ public class CursoController {
     public String editarCurso(@PathVariable("id") Integer id, Model model) {
         Optional<Curso> curso = cursoService.buscarPorIdCurso(id);
         model.addAttribute("curso", curso.get());
-        //model.addAttribute("editando", "true");
         return "/cadastros/cadastroCurso";
     }
 
