@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PessoaEnderecoService {
@@ -19,5 +20,16 @@ public class PessoaEnderecoService {
 
     public List<PessoaEndereco> obtemListaEnderecos(){
         return repositorio.findAll();
+    }
+
+    public Optional<PessoaEndereco> buscarPorIdEndereco(Integer id){
+        return repositorio.findById(id);
+    }
+
+    public void deletarEndereco(Integer id){
+        Optional<PessoaEndereco> endereco = buscarPorIdEndereco(id);
+        if (endereco.isPresent()) {
+            repositorio.delete(endereco.get());
+        }
     }
 }

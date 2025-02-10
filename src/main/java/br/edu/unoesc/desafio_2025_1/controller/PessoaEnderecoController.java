@@ -12,14 +12,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/endereco")
@@ -56,11 +54,32 @@ public class PessoaEnderecoController {
         }
     }
 
-
     @GetMapping("/listarDados")
     public String listarDadosEndereco(Model model){
         List<PessoaEndereco> enderecos = enderecoService.obtemListaEnderecos();
         model.addAttribute("enderecos", enderecos);
         return "/consultas/consultaEndereco";
+    }
+
+    @GetMapping("/editar/{id}")
+    public String editarEndereco(@PathVariable("id") Integer id, Model model) {
+        List<Pessoa> pessoas = pessoaService.obtemListaPessoas();
+        model.addAttribute("pessoas", pessoas);
+        Optional<PessoaEndereco> endereco = enderecoService.buscarPorIdEndereco(id);
+        model.addAttribute("endereco", endereco.get());
+        //model.addAttribute("editando", "true");
+        return "/cadastros/cadastroEndereco";
+    }
+
+    @DeleteMapping("/deletar/{id}")
+    public ResponseEntity<?> deletarEndereco(@PathVariable("id") Integer id){
+        try {
+            enderecoService.deletarEndereco(id);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            Map<String, String> erro = new HashMap<>();
+            erro.put("erro", "Ocorreu um problema ao Deletar o registro");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(erro);
+        }
     }
 }

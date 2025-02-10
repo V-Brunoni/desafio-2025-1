@@ -1,7 +1,6 @@
 package br.edu.unoesc.desafio_2025_1.controller;
 
 import br.edu.unoesc.desafio_2025_1.model.Curso;
-import br.edu.unoesc.desafio_2025_1.model.Pessoa;
 import br.edu.unoesc.desafio_2025_1.service.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,7 +41,7 @@ public class CursoController {
                 return ResponseEntity.badRequest().body(erros);
             }
             Curso cursoSalvo = cursoService.cadastrarCurso(curso);
-            return ResponseEntity.status(HttpStatus.CREATED).body(cursoSalvo); // VER COM O RODRIGO SE AQUI É CURSOSALVO MESMO
+            return ResponseEntity.status(HttpStatus.CREATED).body(cursoSalvo);
         }catch (Exception e){
             Map<String, String> erro = new HashMap<>();
             erro.put("erro", "Ocorreu um problema ao Salvar o registro");
@@ -61,7 +60,7 @@ public class CursoController {
     public String editarCurso(@PathVariable("id") Integer id, Model model) {
         Optional<Curso> curso = cursoService.buscarPorIdCurso(id);
         model.addAttribute("curso", curso.get());
-        model.addAttribute("editando", "true");
+        //model.addAttribute("editando", "true");
         return "/cadastros/cadastroCurso";
     }
 
