@@ -14,8 +14,6 @@ public class EstudanteCursoService {
 
     @Autowired
     private EstudanteCursoRepository repositorio;
-    @Autowired
-    private CursoRepository cursoRepository;
 
     public EstudanteCurso cadastrarEstudante(EstudanteCurso estudante){
         return repositorio.save(estudante);
