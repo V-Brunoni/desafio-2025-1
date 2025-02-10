@@ -19,7 +19,7 @@ public class ProfessorCursoService {
     public ProfessorCurso cadastrarProfessor(ProfessorCurso professor){
         Curso curso = professor.getCurso();
         if (curso.getSituacao() != Situacao.ATIVO) {
-            throw new RuntimeException("O curso precisa estar com a situação ATIVO para cadastrar o estudante.");
+            throw new RuntimeException("O curso precisa estar com a situação ATIVO para cadastrar o professor.");
         }
         return repositorio.save(professor);
     }
