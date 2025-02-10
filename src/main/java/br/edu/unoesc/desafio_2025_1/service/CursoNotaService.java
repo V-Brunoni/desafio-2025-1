@@ -1,6 +1,8 @@
 package br.edu.unoesc.desafio_2025_1.service;
 
+import br.edu.unoesc.desafio_2025_1.model.Curso;
 import br.edu.unoesc.desafio_2025_1.model.CursoNota;
+import br.edu.unoesc.desafio_2025_1.model.Situacao;
 import br.edu.unoesc.desafio_2025_1.repository.CursoNotaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,9 +29,17 @@ public class CursoNotaService {
     }
 
     public void deletarNota(Integer id){
-        Optional<CursoNota> nota = buscarPorIdNota(id);
-        if (nota.isPresent()) {
-            repositorio.delete(nota.get());
+        Optional<CursoNota> notaOpt = buscarPorIdNota(id);
+        if(notaOpt.isPresent()){
+            CursoNota nota = notaOpt.get();
+            Curso curso = nota.getCurso();
+            if (curso.getSituacao() == Situacao.ATIVO) {
+                repositorio.delete(nota);
+            } else {
+                throw new RuntimeException();
+            }
+        } else {
+            throw new RuntimeException();
         }
     }
 }
