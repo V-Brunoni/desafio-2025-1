@@ -14,7 +14,7 @@ public class PessoaEndereco {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     private String cidade;
 
@@ -22,12 +22,12 @@ public class PessoaEndereco {
 
     private String rua;
 
-    private int numero;
+    private Integer numero;
 
     @OneToOne
     private Pessoa pessoa;
 
-    public PessoaEndereco(int id, String cidade, String cep, String rua, int numero, Pessoa pessoa) {
+    public PessoaEndereco(Integer id, String cidade, String cep, String rua, Integer numero, Pessoa pessoa) {
         this.id = id;
         this.cidade = cidade;
         this.cep = cep;

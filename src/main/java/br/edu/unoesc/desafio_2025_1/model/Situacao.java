@@ -11,13 +11,4 @@ public enum Situacao {
         this.situacaoCurso = situacaoCurso;
     }
 
-    public static Situacao fromString(String text) {
-        for (Situacao situacao : Situacao.values()) {
-            if (situacao.situacaoCurso.equalsIgnoreCase(text)) {
-                return situacao;
-            }
-        }
-        throw new IllegalArgumentException("Nenhuma situação encontrada para a string fornecida: " + text);
-    }
-
 }

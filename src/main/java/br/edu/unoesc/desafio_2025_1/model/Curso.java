@@ -17,7 +17,7 @@ public class Curso {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name = "nomeCurso")
     private String nome;
@@ -25,7 +25,7 @@ public class Curso {
     @Column(name = "assuntoCurso")
     private String assunto;
 
-    private int encontros;
+    private Integer encontros;
 
     @Enumerated(EnumType.STRING)
     private Situacao situacao;
@@ -42,13 +42,11 @@ public class Curso {
     @OneToMany(mappedBy = "curso")
     private List<EstudanteCurso> estudantes = new ArrayList<>();
 
-    public Curso(int id, String nome, String assunto, int encontros, Situacao situacao) {
+    public Curso(Integer id, String nome, String assunto, Integer encontros, Situacao situacao) {
         this.id = id;
         this.nome = nome;
         this.assunto = assunto;
         this.encontros = encontros;
-        this.situacao = Situacao.fromString("ativo"); // Alterar depois
+        this.situacao = situacao;
     }
-
-
 }

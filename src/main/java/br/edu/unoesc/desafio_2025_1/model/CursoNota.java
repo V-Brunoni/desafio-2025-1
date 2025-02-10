@@ -16,16 +16,18 @@ public class CursoNota {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    private Double nota;
+
     @ManyToOne
     private Curso curso;
 
     @ManyToOne
     private EstudanteCurso estudante;
 
-    public CursoNota(int id, Curso curso, EstudanteCurso estudante) {
+    public CursoNota(int id, Double nota, Curso curso, EstudanteCurso estudante) {
         this.id = id;
+        this.nota = nota;
         this.curso = curso;
         this.estudante = estudante;
     }
-
 }

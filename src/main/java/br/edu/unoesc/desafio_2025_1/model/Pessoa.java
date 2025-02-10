@@ -2,7 +2,6 @@ package br.edu.unoesc.desafio_2025_1.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -50,7 +49,7 @@ public class Pessoa {
     //@Column(unique = true)
     private String senha;
 
-    @OneToOne(mappedBy = "pessoa")
+    @OneToOne(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
     private PessoaEndereco pessoaEndereco;
 
     @OneToMany(mappedBy = "professor")
@@ -72,5 +71,7 @@ public class Pessoa {
         this.email = dadosPessoa.email();
         this.telefone = dadosPessoa.telefone();
     }
+
+
 
 }
